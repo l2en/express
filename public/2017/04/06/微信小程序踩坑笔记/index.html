@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            微信小程序踩坑笔记 | 
+        
+        Julytian&#39;s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/logo.jpg">
+    <link rel="icon" sizes="192x192" href="/img/logo.jpg">
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="julytian">
+    <meta name="description" content="julytian blog, write less do more">
+    <meta name="keywords" content="julytian, 博客, 技术诗人, 前端开发者,vuejs">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Julytian&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://julytian.coding.me">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="微信小程序踩坑笔记 | Julytian&#39;s blog">
+    <meta property="og:description" content="julytian blog, write less do more">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #EC407A !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #EC407A;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #EC407A;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #EC407A;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-image: url(/img/bg.png);
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#远程图片返回404处理"><span class="post-toc-number">1.</span> <span class="post-toc-text">远程图片返回404处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scroll-view-组件在-tabar页面中不同系统下高度不一致的诡异问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">scroll-view 组件在 tabar页面中不同系统下高度不一致的诡异问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小程序跨页面通信处理"><span class="post-toc-number">3.</span> <span class="post-toc-text">小程序跨页面通信处理</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491475639321&di=235ef0c54a99e87ae44fa72145642294&imgtype=0&src=http%3A%2F%2Fwww.shhorse.com%2FUploadFiles%2FFCK%2F2017-01%2F6361975187092691732973940.jpg)">
+    
+            <p class="article-headline-p">
+                微信小程序踩坑笔记
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/logo.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>julytian</strong>
+        <span>4月 06, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACzElEQVR42u3aUU7EMAwE0L3/peEAaMuMU6Akr18IVmleVsKyJ6+PI58XNjY2NjY2NjY29iPZr/h59/m3r/ny1+vVkhVme8bGxsY+gf3Nv/4vG73eSn4EyfrvDivfMzY2NvY57OuilXw+3+LsLbM9Y2NjY2MPC0Z8QFEjgY2NjY39AwUsb2nuGkthY2NjY68PldpxUvuZtlH5pVkaNjY29uPZbdD7hJ//IN/GxsbGfiT7J55Zg7FS/KJ1sLGxsTdlX1+RaYtZ+5uVdqUdV2FjY2Pvyr5+/V1XIZO3rFzQjI4VGxsb+wB2jrzeYrKhWfFLylgUD2BjY2NvxM6Xu7cJWSmN7TrY2NjYZ7Jnx5FvN19tRsXGxsY+jT27KJM3J/lYPx9v1WUPGxsbe2t2UjBmIe5sPNRGy1FIjI2Njb01O78u046K2qFSe6xFbIyNjY19DHtWnPIrm7PgoQ13sbGxsU9jJ9duZk9+ECtXhZKdY2NjY+/Knm06HwklcW++9Vl4jI2Njb03Oy8tUZEoy9JKMJzEz9jY2NgnsNtBT/ubWWS7PrQqWhFsbGzsf87OI4H2lbODyIPkPGbGxsbG3ps9G82346Q27s2/mKJNwsbGxt6avX7Vpt3irNVp2xtsbGzsc9j5oCcPdGcHkZSxvOBhY2Njn8Cuh+xBm5FcmmyL6A0hNDY2NvYB7Nklm3ac1IYQ618DNjY29gnslYPIL9+sXBVqm5+ogGFjY2Nvyl4PDNYLTxsPRO0KNjY29qbs9slfObv6k0e/9SexsbGxN2W3JaFtPFpAu2ZxlNjY2Nhbs/O2YRYYzIZBs4gXGxsb+2T2rCDNDnG9sLVRBDY2NjZ2Pipqi187ohrGD9jY2NjYQZOQbzSPje8qh9jY2NgnsNtxTz6EWgmVV8ohNjY29jnsuy7irES891KxsbGxz2Gf82BjY2NjY2NjY2M/5vkEVcgWqJY4ii0AAAAASUVORK5CYII=">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/微信小程序/">微信小程序</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=微信小程序踩坑笔记&url=http://julytian.coding.me//2017/04/06/微信小程序踩坑笔记/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Julytian&#39;s blog&title=微信小程序踩坑笔记&summary=julytian blog, write less do more&pics=http://julytian.coding.me/img/logo.jpg&url=http://julytian.coding.me/2017/04/06/微信小程序踩坑笔记/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class=" markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><h2 id="远程图片返回404处理"><a href="#远程图片返回404处理" class="headerlink" title="远程图片返回404处理"></a>远程图片返回404处理</h2><p>当网络请求图片服务器返回404时，<code>image</code> 返回空白结果，影响美观，希望和网页一样出错则显示默认占位图。</p>
+<p>效果如下:</p>
+<p><img src="http://7xo0zm.com1.z0.glb.clouddn.com/clipboard.png" alt="占位图"></p>
+<p><code>image</code> 组件有个API表示：</p>
+<blockquote>
+<p>当错误发生时，发布到 AppService 的事件名，事件对象event.detail = {errMsg: ‘something wrong’}</p>
+</blockquote>
+<a id="more"></a>
+<p>所以，我们可以在 组件上绑定 <code>binderror</code>, 大致如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">"list-pic"</span> <span class="attr">style</span>=<span class="string">"height: &#123;&#123;windowW/2*1.35&#125;&#125;px;"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;item.PicUrl&#125;&#125;"</span> <span class="attr">binderror</span>=<span class="string">"onImageError"</span> <span class="attr">data-err-img</span>=<span class="string">"searchResults[&#123;&#123;index&#125;&#125;].PicUrl"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>事件处理思路大致如下：</p>
+<blockquote>
+<p>当发生错误时调用 binderror 事件函数， 通过 data-* 获取到默认占位图路径，然后重新设置 image 的 url</p>
+<p>通过dataset属性将image组件的src变量值存入。binderror事件通过获取属性变量值改变data的数据。当然这个有个弊端，就是image组件的src是动态的值而不能是直接指向某张图片的情况下。</p>
+</blockquote>
+<p>上面是针对单一图片出现错误进行处理，当时我们一般都是一个 结果数组列表的形式，这个时候 <code>binderror</code> 事件是在图片错误的时候才会调用该事件的，那么在事件中实际上是通过 <code>data-*</code>获取了list中当前错误的对象图片在进行<code>setData</code> 的。</p>
+<p>多个<code>image</code>报错处理代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">"list-pic"</span> <span class="attr">style</span>=<span class="string">"height: &#123;&#123;windowW/2*1.35&#125;&#125;px;"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;item.PicUrl&#125;&#125;"</span> <span class="attr">binderror</span>=<span class="string">"onImageError"</span> <span class="attr">data-err-img</span>=<span class="string">"searchResults[&#123;&#123;index&#125;&#125;].PicUrl"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">onImageError: <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> _errImg=ev.target.dataset.errImg;  </div><div class="line">  <span class="keyword">var</span> _errObj=&#123;&#125;;  </div><div class="line">  _errObj[_errImg]=<span class="string">"http://i2.mbscss.com/img/moonbasa/2014/jue/M10_27_203039.jpg"</span>;  </div><div class="line">  <span class="built_in">console</span>.log( ev.detail.errMsg+<span class="string">"----"</span> + <span class="string">"----"</span> +_errImg );  </div><div class="line">  that.setData(_errObj); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这样存在一个情况就是每个页面都写这个程序不是很臃肿，那么我们考虑怎么把他写入到模块js文件里面呢？</p>
+<p>解决方案：：先把 <code>this</code>对象传入到js函数里面，就可以直接修改外面的data数据了。具体函数如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//远程图片no found情况下指引  </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">errImgFun</span>(<span class="params">ev, that</span>)</span>&#123;  </div><div class="line">  <span class="keyword">var</span> _errImg=ev.target.dataset.errImg;  </div><div class="line">  <span class="keyword">var</span> _errObj=&#123;&#125;;  </div><div class="line">  _errObj[_errImg]=<span class="string">"http://i2.mbscss.com/img/moonbasa/2014/jue/M10_27_203039.jpg"</span>;  </div><div class="line">  <span class="built_in">console</span>.log( ev.detail.errMsg+<span class="string">"----"</span> + <span class="string">"----"</span> +_errImg );  </div><div class="line">  that.setData(_errObj);    </div><div class="line">&#125;  </div><div class="line"><span class="built_in">module</span>.exports = &#123;  </div><div class="line">  <span class="attr">errImgFun</span>: errImgFun  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>xx.js</code> 里面引入调用:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 处理图片加载404问题</span></div><div class="line"><span class="keyword">var</span> errorImage = <span class="built_in">require</span>(<span class="string">'../../utils/errorImage.js'</span>);</div><div class="line"><span class="comment">// 远程图片加载404显示默认图</span></div><div class="line">onImageError: <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</div><div class="line">     <span class="keyword">var</span> _that=<span class="keyword">this</span>;  </div><div class="line">     errorImage.errImgFun(ev, _that);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="scroll-view-组件在-tabar页面中不同系统下高度不一致的诡异问题"><a href="#scroll-view-组件在-tabar页面中不同系统下高度不一致的诡异问题" class="headerlink" title="scroll-view 组件在 tabar页面中不同系统下高度不一致的诡异问题"></a>scroll-view 组件在 tabar页面中不同系统下高度不一致的诡异问题</h2><p><img src="http://7xo0zm.com1.z0.glb.clouddn.com/clipboard2.png" alt=""></p>
+<p>如上图，我们有个需求是这样的，左边点击分类，右边更新，并且如果数据多可以滚动。当初考虑方法是采用左右二个 <code>scroll-view</code>组件做，因为它是可滚动视图区域，可以根据 设备的 系统信息API 获取到屏幕的高度设置 <code>scroll-view</code> 的高度，跟随设备屏幕高度自适应。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">wx.getSystemInfo(&#123;</div><div class="line">  <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(res.model)</div><div class="line">    <span class="built_in">console</span>.log(res.pixelRatio)</div><div class="line">    <span class="built_in">console</span>.log(res.windowWidth)</div><div class="line">    <span class="built_in">console</span>.log(res.windowHeight)</div><div class="line">    <span class="built_in">console</span>.log(res.language)</div><div class="line">    <span class="built_in">console</span>.log(res.version)</div><div class="line">    <span class="built_in">console</span>.log(res.platform)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>获取到设备的屏幕高度，从而设置 <code>scroll-view</code> 的高度。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">"true"</span> <span class="attr">style</span>=<span class="string">"height:&#123;&#123;deviceHeight&#125;&#125;px"</span> <span class="attr">class</span>=<span class="string">"left_tabbar_list"</span>&gt;</span><span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>理论上，这样设置是没有问题的，在非 <code>tabar</code> 页面设置高度， IOS和安卓系统下都是没问题的，但是在 <code>tabar</code>页面上，在 <strong>iOS</strong> 下就会出现下面的 <code>tabar</code>遮住了滚动高度，出现偏差，滚动无法滚动完全出来。</p>
+<p>网上查了相关资料也没有一个说法，我不断测试发现 IOS 下获取的屏幕高度把 <code>tabar</code> 的高度也计算进来了，<code>tabbar</code>的高度是 <code>50px</code> , 所以，我们需要根据不同设备系统计算高度，大致方法如下：</p>
+<blockquote>
+<p>IOS下获取到设备的屏幕高度，然后减去 tabar 的高度，安卓则不变</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">wx.getSystemInfo(&#123;</div><div class="line">      <span class="attr">success</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</div><div class="line">        that.setData(&#123;</div><div class="line">          <span class="attr">deviceWidth</span>: res.windowWidth,</div><div class="line">          <span class="attr">deviceHeight</span>: res.windowHeight<span class="number">-50</span>+<span class="string">'px'</span>,</div><div class="line">          <span class="attr">platform</span>: res.platform</div><div class="line">        &#125;);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">scroll-view</span> <span class="attr">scroll-y</span>=<span class="string">"true"</span> <span class="attr">style</span>=<span class="string">"height:&#123;&#123;platform=='ios'?deviceHeight:'100%'&#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"left_tabbar_list"</span>&gt;</span><span class="tag">&lt;/<span class="name">scroll-view</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>经过测试，IOS和安卓下面都没有问题了。</p>
+<h2 id="小程序跨页面通信处理"><a href="#小程序跨页面通信处理" class="headerlink" title="小程序跨页面通信处理"></a>小程序跨页面通信处理</h2><blockquote>
+<p>注意：为了不让用户在使用小程序时造成困扰，我们规定页面路径只能是五层，请尽量避免多层级的交互方式。</p>
+</blockquote>
+<p>微信小程序对页面跳转做了严格限制处理。但是有时，需求超过了5层，并且需要跨页面来回跳转处理数据，我这边的小程序就涉及到这样一个要求：搜索页跳到筛选页，做完处理跳回搜索页查询，来回跨页面跳转，所以筛选页面不能使用 <code>navigateTo</code>,因为<strong>来回跳转容易出现超过5层，出bug，无法继续跳转</strong>。</p>
+<p>解决办法，筛选页面使用 跨页面通信，直接 <code>navigateBack</code>返回，避免再次出现超过5层跳转情况。</p>
+<p>这里，我们使用 <strong>github</strong> 上个一个通信操作库，<a href="http://weappdev.com/t/wxnotificationcenter/233" target="_blank" rel="external">地址</a>, 里面有基本用法.</p>
+<p>问题出处情况如下：搜索跳到筛选，又跳回来：</p>
+<p><img src="http://7xo0zm.com1.z0.glb.clouddn.com/clipboard3.png" alt="搜索"></p>
+<p><img src="http://7xo0zm.com1.z0.glb.clouddn.com/clipboard4.png" alt="筛选"></p>
+<p>部分代码处理如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 跨页面通信方法</span></div><div class="line"><span class="keyword">var</span> WxNotificationCenter = <span class="built_in">require</span>(<span class="string">'../../utils/WxNotificationCenter.js'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 搜索页</span></div><div class="line">wx.navigateTo(&#123;</div><div class="line">   <span class="attr">url</span>: <span class="string">'../filtrate/filtrate?sourcefrom=search&amp;keyword='</span> + that.data.inputVal + <span class="string">'&amp;order='</span> + that.data.order + <span class="string">'&amp;orderby='</span> + that.data.orderby</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 筛选页</span></div><div class="line"><span class="comment">// 向上一页发送一个通知</span></div><div class="line">WxNotificationCenter.postNotificationName(<span class="string">'filtrateNotification'</span>, filtrateUrl);</div><div class="line">wx.navigateBack();</div><div class="line"></div><div class="line"><span class="comment">// 搜索页接收通知</span></div><div class="line"><span class="comment">// 从筛选跳转回来的操作</span></div><div class="line">WxNotificationCenter.addNotification(<span class="string">'filtrateNotification'</span>, that.onFiltrateNotification, that);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意： 新版小程序的 <code>wx.redirectTo(OBJECT)</code> 可以回传参数了，这样就可以避免跨页面传参了，只需要在参数做个判断来自哪个页面的信息就可以了！！</p>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread"
+        data-thread-key=""
+        data-url="http://julytian.coding.me/2017/04/06/微信小程序踩坑笔记/"
+        data-title="微信小程序踩坑笔记">
+    </div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/06/vue与node结合开发部署/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/02/08/快捷键精华版（转载）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/logo.jpg" alt="julytian's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        992113471@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://weibo.com/Julytian" target="_blank" title="Chat With Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Chat With Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">5</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/nodejs/">nodejs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/vue/">vue<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/学习/">学习<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/微信小程序/">微信小程序<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/生活/">生活<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/移动端/">移动端<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/编辑器/">编辑器<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="/about/" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+  	
+        <li>
+            <a href="/tags/" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                标签云
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">9</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/Julytian" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/julytian" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="http://www.zhihu.com/people/julytian" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Julytian's blog
+
+              <div id="days"></div>
+<script src="https://cdn.bootcss.com/moment.js/2.17.0/moment.min.js">
+//这里调用了公共库中现成的 js 文件，也可以直接调用站点中的 js 文件
+</script>
+<script>
+	var begin = moment([2017,01,06]); //定义博客开始时间
+	var now = moment(); //使用 moment() 获取当前时间
+    document.getElementById('days').innerHTML ="博客已运行 "+ now.diff(begin,'days') +" 天"
+// 使用 now.diff(begin,'days') 函数获取天数，这里天数考虑了闰年
+</script>
+        </div>
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    <script src="/js/smoothscroll.js"></script>
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: 'wenyiyuan'
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title != '' && data_content != '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content +'...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
